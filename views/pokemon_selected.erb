@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <p>Hello, you have chosen, <%= @name %></p>
+
+        <p><%= @name %>'s id is <%= @id %></p>
+    
+        <div class="stats">
+            <p>Has stats</p>
+            <% @stats.each do |stat| %>
+                <p><%= stat[:name] %></p>
+                <p><%= stat[:val] %></p>
+            <% end %>
+        </div>
+
+        <div class="abilities">
+            <p>Has abilities</p>
+            <% @abilities.each do |ability| %>
+                <p><%= ability %></p>
+            <% end %>
+        </div>
+    </div>
+</body>
+</html>
+
