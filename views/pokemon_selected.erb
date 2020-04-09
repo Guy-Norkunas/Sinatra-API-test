@@ -8,14 +8,14 @@
 </head>
 <body>
     <div class="container">
-        <p>Hello, you have chosen, <%= @name %></p>
+        <p>Hello, you have chosen, <%= @name.upcase %></p>
 
         <p><%= @name %>'s id is <%= @id %></p>
     
         <div class="stats">
-            <p>Has stats</p>
+            <p id="title">Has stats</p>
             <% @stats.each do |stat| %>
-                <p><%= stat[:name] %></p>
+                <p><%= stat[:name].upcase %></p>
                 <p><%= stat[:val] %></p>
             <% end %>
         </div>
@@ -23,7 +23,7 @@
         <div class="abilities">
             <p>Has abilities</p>
             <% @abilities.each do |ability| %>
-                <p><%= ability %></p>
+                <p><%= ability.upcase %></p>
             <% end %>
         </div>
     </div>
