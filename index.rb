@@ -3,7 +3,6 @@ require 'sinatra/json'
 require 'erb'
 require 'httparty'
 
-
 #allows the localhost port this webserves runs in to be changed
 
 PORT = 9494
