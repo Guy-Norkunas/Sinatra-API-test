@@ -7,7 +7,7 @@ PORT = 9494
 
 set :port, PORT
 
-get "/" do
+get "/pokemon" do
     return "test"
 end
 
@@ -46,13 +46,4 @@ get "/pokemon/:name" do
     @stats = stats
     @abilities = abilities
     erb :pokemon_selected
-end
-
-
-get "/ability" do
-    return "abilities"
-end
-
-get "/type" do
-    return "types"
 end
