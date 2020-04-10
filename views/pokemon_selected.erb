@@ -17,17 +17,18 @@
       </div>
 
       <div class="basicinfo">
-        <img id="sprite1" src="link to front sprite here" alt="front sprite">
-        <img id="sprite2" src="link to back sprite here" alt="back sprite">
-        <p id="id">ID: </p>
-        <p id="name">Name: </p>
+        <img id="sprite1" src="<%= @sprite1 %>" alt="front sprite">
+        <img id="sprite2" src="<%= @sprite2 %>" alt="back sprite">
+        <p id="id">ID: <%= @id %></p>
+        <p id="name">Name: <%= @name %></p>
         <div class="type">
-          <p>type1</p>
-          <p>type2</p>
+          <% @types.each_with_index do |temp| %>
+            <p>type: <%= temp["type"]["name"] %></p>
+          <% end %>
         </div>
         <div class="appearance">
-          <p>height</p>
-          <p>weight</p>
+          <p>height: <%= (@height * 0.3).round(1)%>m</p>
+          <p>weight: <%= (@weight / 2.2).round(1)%>kg</p>
         </div>
       </div>
 
