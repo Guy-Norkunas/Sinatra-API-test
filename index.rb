@@ -26,6 +26,12 @@ get "/pokemon/:name" do
 
   pokemon_info = response.parsed_response
 
+  p pokemon_info
+
+  if pokemon_info == "Not Found"
+    redirect "/pokemon/jynx"
+  end
+
   pokemon_info["sprites"]["front_default"]
 
   @sprite1 = pokemon_info["sprites"]["front_default"]
