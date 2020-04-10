@@ -7,43 +7,49 @@ PORT = 9494
 
 set :port, PORT
 
+set(:query) { |val| condition { request.query_string == val } }
+
 get "/pokemon" do
-    return "test"
+  return "test"
 end
 
 get "/pokemon/:name" do
-    response = HTTParty.get("https://pokeapi.co/api/v2/pokemon/#{params["name"]}")
+  if params["test"]
+    redirect "/pokemon/#{params["test"]}"
+  end
 
-    thing = response.parsed_response
+  response = HTTParty.get("https://pokeapi.co/api/v2/pokemon/#{params["name"]}")
 
-    stats = []
-    abilities = []
+  thing = response.parsed_response
 
-    name = thing["name"]
+  stats = []
+  abilities = []
 
-    id = thing["id"]
-    puts "#{name} has id: #{id}"
-    
-    i = 0
-    while i < 6
-        statname = thing["stats"][i]["stat"]["name"]
-        statval = thing["stats"][i]["base_stat"]
-        stats[i] = {name: statname, val: statval}
-        puts "base #{statname}: #{statval}"
-        i += 1
-    end
-    
-    i = 0
-    while i < thing["abilities"].length
-        abilityname = thing["abilities"][i]["ability"]["name"]
-        abilities << abilityname
-        puts "has ability #{abilityname}"
-        i += 1
-    end
+  name = thing["name"]
 
-    @name = name
-    @id = id
-    @stats = stats
-    @abilities = abilities
-    erb :pokemon_selected
+  id = thing["id"]
+  puts "#{name} has id: #{id}"
+  
+  i = 0
+  while i < 6
+      statname = thing["stats"][i]["stat"]["name"]
+      statval = thing["stats"][i]["base_stat"]
+      stats[i] = {name: statname, val: statval}
+      puts "base #{statname}: #{statval}"
+      i += 1
+  end
+  
+  i = 0
+  while i < thing["abilities"].length
+      abilityname = thing["abilities"][i]["ability"]["name"]
+      abilities << abilityname
+      puts "has ability #{abilityname}"
+      i += 1
+  end
+
+  @name = name
+  @id = id
+  @stats = stats
+  @abilities = abilities
+  erb :pokemon_selected
 end
