@@ -9,6 +9,10 @@ set :port, PORT
 
 set(:query) { |val| condition { request.query_string == val } }
 
+get "/" do
+  redirect "/pokemon/jynx"
+end
+
 get "/pokemon" do
   redirect "/pokemon/jynx"
 end
