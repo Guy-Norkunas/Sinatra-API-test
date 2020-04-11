@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/json'
 require 'erb'
 require 'httparty'
+require "sqlite3"
 
 #allows the localhost port this webserves runs in to be changed
 
@@ -55,13 +56,13 @@ get "/pokemon/:name" do
   #these @'s allows the values to be accessed by the erb file at the end
   #and everything else is just accessing specifc parts of the pokemon_info object
 
-  @sprite1 = pokemon_info["sprites"]["front_default"]
-  @sprite2 = pokemon_info["sprites"]["back_default"]
-  @id = pokemon_info["id"]
-  @name = pokemon_info["name"]
-  @types = pokemon_info["types"]
-  @height = pokemon_info["height"]
-  @weight = pokemon_info["weight"]
+  @sprite1 = pokemon_info["sprites"]["front_default"] #varchar
+  @sprite2 = pokemon_info["sprites"]["back_default"] #varchar
+  @id = pokemon_info["id"] #int
+  @name = pokemon_info["name"] #varchar
+  @types = pokemon_info["types"] #array of varchar
+  @height = pokemon_info["height"] #float
+  @weight = pokemon_info["weight"] #float
 
   #returns the erb file to the person who triggered the GET request
   #in a browser this will display as html/css
