@@ -1,5 +1,12 @@
 require "sqlite3"
 
+class cache
+  def initialize
+    @db = SQLite3::Database.new("cache.db")
+    end
+
+end
+
 db = SQLite3::Database.new("cache.db")
 
 # db.execute("CREATE TABLE test (
